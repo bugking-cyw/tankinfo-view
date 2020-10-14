@@ -1,10 +1,15 @@
 import request from '@/utils/request'
 
 export function login(data) {
+  // return request({
+  //   url: '/vue-admin-template/user/login',
+  //   method: 'post',
+  //   data
+  // })
   return request({
-    url: '/vue-admin-template/user/login',
+    url: 'http://localhost/tankinfo-admin/admin/login',
     method: 'post',
-    data
+    data: data
   })
 }
 

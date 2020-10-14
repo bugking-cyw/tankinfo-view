@@ -105,13 +105,12 @@ export default {
         this.$refs.password.focus()
       })
     },
-    
+
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
-            debugger
             this.$router.push({ path: this.redirect || '/' })
             this.loading = false
           }).catch((e) => {
