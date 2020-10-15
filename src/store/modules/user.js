@@ -34,6 +34,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
+        data.token = 'Bearer ' + data.token
         commit('SET_TOKEN', data.token)
         setToken(data.token)
         resolve()
@@ -46,13 +47,15 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      getInfo().then(response => {
         const { data } = response
 
         if (!data) {
           return reject('Verification failed, please Login again.')
         }
 
+        data.name = data.user.username
+        data.avatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
         const { name, avatar } = data
 
         commit('SET_NAME', name)

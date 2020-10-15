@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+// import { data } from 'autoprefixer'
 
 export function login(data) {
   // return request({
@@ -7,23 +8,23 @@ export function login(data) {
   //   data
   // })
   return request({
-    url: 'http://localhost/tankinfo-admin/admin/login',
+    // url: 'http://localhost/tankinfo-admin/admin/login',
+    url: '/tankinfo-admin/admin/login',
     method: 'post',
     data: data
   })
 }
 
-export function getInfo(token) {
+export function getInfo() {
   return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
+    url: '/tankinfo-admin/admin/currentUser',
+    method: 'post'
   })
 }
 
 export function logout() {
   return request({
-    url: '/vue-admin-template/user/logout',
+    url: '/tankinfo-admin/admin/logout',
     method: 'post'
   })
 }
